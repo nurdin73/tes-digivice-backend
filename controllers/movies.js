@@ -151,7 +151,7 @@ exports.search = (req,res) => {
     movies.findAll({
         where: {
             title: {
-                [Op.substring]: req.params.search
+                [Op.like]: `%${req.params.search}%`
             }
         },
         include: [
