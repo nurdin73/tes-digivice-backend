@@ -144,3 +144,10 @@ exports.trending = (req,res) => {
         }
     })
 }
+
+exports.post = (req,res) => {
+    movies.create(req.body).then(result => res.send(result))
+}
+exports.publisher = (req,res) => {
+    publishers.create(req.body).then(result => res.send(result))
+}

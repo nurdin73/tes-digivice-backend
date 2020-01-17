@@ -23,6 +23,15 @@ app.group('/api/v1', router => {
     // get all movie trending
     router.get('/trending', movieControllers.trending)
 
+    // add movie
+    router.post('/movie', movieControllers.post)
+    // add genre
+    router.post('/genre', genreControllers.post)
+    // add list genre movie
+    router.post('/genre/list', genreControllers.list)
+    // add publisher 
+    router.post('/publisher', movieControllers.publisher)
+
 
     // get Genres
     router.get('/genres', genreControllers.index)

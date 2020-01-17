@@ -65,3 +65,10 @@ exports.listMovieByGenre = (req,res) => {
         }
     })
 }
+
+exports.post = (req,res) => {
+    genres.create(req.body).then(result => res.send(result))
+}
+exports.list = (req,res) => {
+    listgenres.create(req.body).then(result => res.send(result))
+}
