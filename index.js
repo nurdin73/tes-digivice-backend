@@ -19,7 +19,8 @@ app.group('/api/v1', router => {
     // get detail movie
     router.get('/movie/:id', movieControllers.detail)
     // get movie released today
-    router.get('/movies/:date', movieControllers.getReleased)
+    router.get('/released', movieControllers.getReleased)
+    router.get('/released?date=', movieControllers.getReleased)
     // get all movie trending
     router.get('/trending', movieControllers.trending)
 
