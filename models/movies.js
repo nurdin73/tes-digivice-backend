@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     publishId: DataTypes.INTEGER,
     overview: DataTypes.TEXT,
     rating: DataTypes.INTEGER,
-    dateReleased: DataTypes.DATE,
+    dateReleased: DataTypes.STRING,
     status: DataTypes.STRING
   }, {});
   movies.associate = function(models) {
