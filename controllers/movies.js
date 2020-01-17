@@ -147,6 +147,38 @@ exports.trending = (req,res) => {
     })
 }
 
+exports.search = (req,res) => {
+    movies.findAll({
+        where: {
+            title: {
+                [Op.substring]: req.params.search
+            }
+        },
+        include: [
+            {
+                model: publishers,
+                as: 'publisher'
+            },
+            {
+                model: genres,
+                as: 'genres',
+                through: {
+                    model: listGenres,
+                }
+            }
+        ],
+    }).then(result => {
+        if(result.length) {
+            res.status(200).json(listMovies(result))
+        } else {
+            res.send({
+                status: false,
+                message: 'Movie not found'
+            })
+        }
+    })
+}
+
 exports.post = (req,res) => {
     movies.create(req.body).then(result => res.send(result))
 }

@@ -16,6 +16,8 @@ app.get('/', (req,res) => {
 app.group('/api/v1', router => {
     // get all movie
     router.get('/movies', movieControllers.index)
+    // get movie by title
+    router.get('/movie/search/:search', movieControllers.search)
     // get detail movie
     router.get('/movie/:id', movieControllers.detail)
     // get movie released today
