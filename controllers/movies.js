@@ -87,7 +87,7 @@ exports.getReleased = (req,res) => {
     movies.findAll({
         where: {
             dateReleased: {
-                [Op.like]: `%${req.query.date}%`
+                [Op.eq]: req.query.date
             },
             status: 'released'
         },
