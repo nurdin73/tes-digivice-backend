@@ -1,8 +1,5 @@
 'use strict';
 
-const timezone = 'Asia/Jakarta'
-const moment = require('moment-timezone')
-moment().tz(timezone).format();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

@@ -113,6 +113,8 @@ exports.getReleased = (req,res) => {
                 message: 'no movie playing'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 exports.trending = (req,res) => {
