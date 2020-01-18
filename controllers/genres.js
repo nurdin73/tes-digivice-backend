@@ -23,7 +23,9 @@ exports.index = (req,res) => {
 // get detail genre
 exports.detail = (req,res) => {
     genres.findOne({
-        id: req.params.id
+        where: {
+            id: req.params.id
+        }
     }).then(result => {
         if(result) {
             res.status(200).json(listGenre(result))
