@@ -2,6 +2,7 @@ const models = require('../models')
 const movies = models.movies
 const listgenres = models.listgenres
 const genres = models.genres
+const stats = models.stats
 const publishers = models.publishers
 const {listMovies} = require('../helpers/movie')
 const {listGenres, listGenre} = require('../helpers/genre')
