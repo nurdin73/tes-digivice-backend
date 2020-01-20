@@ -54,6 +54,10 @@ exports.listMovieByGenre = (req,res) => {
                 where: {
                     id: req.params.id
                 },
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(result => {
@@ -65,6 +69,8 @@ exports.listMovieByGenre = (req,res) => {
                 message: 'movie in this genre is not found'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 
