@@ -56,6 +56,8 @@ exports.index = (req,res) => {
                 message: 'Movie not found'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 exports.detail = (req,res) => {
@@ -89,6 +91,8 @@ exports.detail = (req,res) => {
                 message: 'movie is not found'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 
@@ -165,6 +169,8 @@ exports.trending = (req,res) => {
                 message: 'no movie trending'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 
@@ -201,6 +207,8 @@ exports.search = (req,res) => {
                 message: 'Movie not found'
             })
         }
+    }).catch(err => {
+        res.send(err)
     })
 }
 
