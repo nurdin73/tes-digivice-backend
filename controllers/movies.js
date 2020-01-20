@@ -10,24 +10,6 @@ const stats = models.stats
 
 const {listMovies, listMovie} = require('../helpers/movie')
 
-const date = new Date();
-date.setDate(date.getDate() + 1 );
-date.setMonth(date.getMonth());
-let bln = date.getMonth() + 1;
-if (bln < 10) {
-  bln = "0" + bln;
-} else {
-  bln = bln;
-}
-let hari = date.getDate();
-if (hari < 10) {
-  hari = "0" + hari;
-} else {
-  hari = hari;
-}
-
-let tgl = date.getFullYear() + "-" + bln + "-" + hari;
-
 exports.index = (req,res) => {
     movies.findAll({
         include: [
@@ -210,6 +192,11 @@ exports.search = (req,res) => {
     }).catch(err => {
         res.send(err)
     })
+}
+
+
+exports.getStats = (req,res) => {
+    stats.findAll().then(result => res.send(result))
 }
 
 exports.post = (req,res) => {

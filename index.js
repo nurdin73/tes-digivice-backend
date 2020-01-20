@@ -25,6 +25,8 @@ app.group('/api/v1', router => {
     // router.get('/released?date=', movieControllers.getReleased)
     // get all movie trending
     router.get('/trending', movieControllers.trending)
+    // get stats
+    router.get('/stats', movieControllers.getStats)
 
     // add movie
     router.post('/movie', movieControllers.post)
