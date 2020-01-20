@@ -32,8 +32,17 @@ module.exports = {
       dateReleased: {
         type: Sequelize.DATE
       },
-      status: {
-        type: Sequelize.STRING
+      statsId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'stats',
+          key: 'id'
+        },
+        onDelete: 'set null',
+        onUpdate: 'cascade'
+      },
+      nowPlaying: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

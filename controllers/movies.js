@@ -6,6 +6,7 @@ const movies = models.movies
 const listGenres = models.listgenres
 const genres = models.genres
 const publishers = models.publishers
+const stats = models.stats
 
 const {listMovies, listMovie} = require('../helpers/movie')
 
@@ -40,6 +41,10 @@ exports.index = (req,res) => {
                 through: {
                     model: listGenres,
                 }
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(movie => {
@@ -69,6 +74,10 @@ exports.detail = (req,res) => {
                 through: {
                     model: listGenres,
                 }
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(result => {
@@ -86,10 +95,8 @@ exports.detail = (req,res) => {
 exports.getReleased = (req,res) => {
     movies.findAll({
         where: {
-            dateReleased: {
-                [Op.eq]: req.query.date
-            },
-            status: 'released'
+            statsId: 1,
+            nowPlaying: true
         },
         include: [
             {
@@ -102,6 +109,10 @@ exports.getReleased = (req,res) => {
                 through: {
                     model: listGenres,
                 }
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(result => {
@@ -119,6 +130,12 @@ exports.getReleased = (req,res) => {
 }
 exports.trending = (req,res) => {
     movies.findAll({
+        where: {
+            rating: {
+                [Op.between] : [85,100]
+            },
+            statsId: 1,
+        },
         order: [
             ['rating', 'DESC']
         ],
@@ -133,6 +150,10 @@ exports.trending = (req,res) => {
                 through: {
                     model: listGenres,
                 }
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(result => {
@@ -165,6 +186,10 @@ exports.search = (req,res) => {
                 through: {
                     model: listGenres,
                 }
+            },
+            {
+                model: stats,
+                as: 'stat'
             }
         ],
     }).then(result => {
@@ -184,4 +209,7 @@ exports.post = (req,res) => {
 }
 exports.publisher = (req,res) => {
     publishers.create(req.body).then(result => res.send(result))
+}
+exports.stats = (req,res) => {
+    stats.create(req.body).then(result => res.send(result))
 }

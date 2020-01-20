@@ -22,7 +22,7 @@ app.group('/api/v1', router => {
     router.get('/movie/:id', movieControllers.detail)
     // get movie released today
     router.get('/released', movieControllers.getReleased)
-    router.get('/released?date=', movieControllers.getReleased)
+    // router.get('/released?date=', movieControllers.getReleased)
     // get all movie trending
     router.get('/trending', movieControllers.trending)
 
@@ -34,6 +34,8 @@ app.group('/api/v1', router => {
     router.post('/genre/list', genreControllers.list)
     // add publisher 
     router.post('/publisher', movieControllers.publisher)
+    // add stats
+    router.post('/stats', movieControllers.stats)
 
 
     // get Genres

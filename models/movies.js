@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     overview: DataTypes.TEXT,
     rating: DataTypes.INTEGER,
     dateReleased: DataTypes.STRING,
-    status: DataTypes.STRING
+    statsId: DataTypes.INTEGER,
+    nowPlaying: DataTypes.BOOLEAN
   }, {});
   movies.associate = function(models) {
     // associations can be defined here
@@ -19,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     movies.belongsTo(models.publishers, {
       foreignKey: "publishId",
       as: "publisher",
+      sourceKey: "id"
+    })
+    movies.belongsTo(models.stats, {
+      foreignKey: "statsId",
+      as: "stat",
       sourceKey: "id"
     })
   };

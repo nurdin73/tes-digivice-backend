@@ -20,7 +20,10 @@ exports.listMovies = data => {
             overview: result.overview,
             rating: result.rating,
             dateReleased: formatDate(result.dateReleased),
-            status: result.status,
+            status: {
+              id: result.stat.id,
+              status: result.stat.status
+            },
             genres: result.genres.map(genre => {
               let genres = {
                 id: genre.id,
@@ -43,7 +46,10 @@ exports.listMovie = data => {
     overview: data.overview,
     rating: data.rating,
     dateReleased: formatDate(data.dateReleased),
-    status: data.status,
+    status: {
+      id: data.stat.id,
+      status: data.stat.status
+    },
     genres: data.genres.map(genre => {
       let genres = {
         id: genre.id,
